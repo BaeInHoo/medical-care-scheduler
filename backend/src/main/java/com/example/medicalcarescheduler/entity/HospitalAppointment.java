@@ -24,6 +24,11 @@ import java.time.LocalTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class HospitalAppointment extends BaseTimeEntity {
 
+	public HospitalAppointment(User user) {
+		this.user = user;
+		this.status = AppointmentStatus.SCHEDULED;
+	}
+
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "user_id", nullable = false)
 	private User user;
